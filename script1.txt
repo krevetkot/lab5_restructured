@@ -1,0 +1,9 @@
+info
+execute_file script2.txt
+max_by_killer
+filter_less_than_killer 3
+print_field_descending_age
+remove_first
+show
+remove_by_id 18347624
+show
