@@ -5,7 +5,9 @@ package objects;
  * @author Kseniya
  */
 public enum Country {
-    FRANCE,
-    SPAIN,
-    CHINA;
+    USA,
+    VATICAN,
+    ITALY,
+    THAILAND,
+    SOUTH_KOREA;
 }
