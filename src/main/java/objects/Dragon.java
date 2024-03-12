@@ -72,7 +72,7 @@ public class Dragon implements Comparable{
     public String toString(){
         if (killer == null){
             return this.getClass().getName() + '{'
-                    + "id= " + this.id
+                    + "id=" + this.id
                     + ", name=" + this.name
                     + ", coordinates=" + this.coordinates
                     + ", creation date=" + this.creationDate

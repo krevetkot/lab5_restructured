@@ -13,7 +13,6 @@ public class RuntimeManager {
     public static void launch() {
         System.out.println("Приветствуем Вас в приложении по управлению коллекцией! Введите \'help\' для вывода доступных команд.");
         commandManager = new CommandManager();
-//        try (Scanner scanner = new Scanner(System.in)){
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 if (scanner.hasNext()){
@@ -21,12 +20,10 @@ public class RuntimeManager {
                     request = request.trim();
                     String[] listRequest = request.split(" ");
 
-
-
                     try {
                         commandProcessing(listRequest, false, scanner);
                     } catch (NoSuchElementException e1){
-                        System.out.println("Вы ввели ctrl+c. До свидания.");
+                        System.out.println("До свидания! Приходите еще :)");
                         System.exit(0);
                     }
                     catch (Exception e){
@@ -34,19 +31,11 @@ public class RuntimeManager {
                     }
                 }
                 else {
-                    System.out.println("Вы ввели ctrl+c. До свидания.");
+                    System.out.println("До свидания! Приходите еще :)");
                     System.exit(0);
                 }
-//                try {
-//
-//                } catch (NoSuchElementException e){
-//                    System.out.println("Вы ввели ctrl c. До свидания.");
-//                    System.exit(0);
-//                }
             }
-//        } catch (Exception e){
-//            System.out.println("промпля");
-//        }
+
     }
 
     public static void commandProcessing(String[] listRequest, boolean fileMode, Scanner scanner) throws IllegalValueException {

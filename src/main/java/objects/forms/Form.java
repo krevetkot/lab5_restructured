@@ -104,13 +104,13 @@ public abstract class Form<T> {
         Console.print("Введите " + name + ":", fileMode);
         while(true){
             String str = scanner.nextLine().trim();
-            if (name.isBlank() && !canBeEmpty){
+            if (str.isBlank() && !canBeEmpty){
                 if (fileMode){
                     throw new IllegalValueException("Введено недопустимое значение.", str);
                 }
                 Console.print("Строка не может быть пустой! Попробуйте еще раз.", fileMode);
             }
-            else if (name.isBlank()){
+            else if (str.isBlank()){
                 return null;
             }
             else {

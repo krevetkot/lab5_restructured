@@ -14,7 +14,7 @@ public class RemoveFirst extends Command{
             System.out.println("Коллекция пуста.");
         }
         else {
-            CollectionManager.getCollection().removeFirst();
+            CollectionManager.getCollection().remove(0);
             System.out.println("Первый элемент в коллекции удален.");
         }
     }

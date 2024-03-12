@@ -19,7 +19,7 @@ public class Info extends Command {
         else {
             System.out.println("Тип коллекции: " + CollectionManager.getCollection().getClass());
             System.out.println("Количество элементов: " + CollectionManager.getCollection().size());
-            System.out.println("Дата инициализации: " + CollectionManager.getCollection().getFirst().getCreationDate());
+            System.out.println("Дата инициализации: " + CollectionManager.getCollection().get(0).getCreationDate());
         }
     }
 }

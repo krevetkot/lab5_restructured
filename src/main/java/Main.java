@@ -1,3 +1,4 @@
+import commands.Info;
 import commands.Save;
 import exceptions.FailedBuildingException;
 import exceptions.IllegalValueException;
@@ -12,7 +13,6 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
-
         if (args.length == 0){
             System.out.println("Вы не указали имя файла. Запуск невозможен.");
             System.exit(1);
@@ -25,14 +25,10 @@ public class Main {
         catch (IOException | JAXBException | FailedBuildingException e){
             System.out.println(e.getMessage());
             System.out.println("Не удалось загрузить коллекцию.");
+            System.exit(1);
         }
 
-        try {
-            RuntimeManager.launch();
-        }
-        catch (Exception e){
-            System.exit(0);
-        }
+        RuntimeManager.launch();
 
         try {
             Save save = new Save();

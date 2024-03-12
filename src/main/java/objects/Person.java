@@ -37,7 +37,7 @@ public class Person {
     @Override
     public String toString(){
         return this.getClass().getName() + '{'
-                + ", name=" + this.name
+                + "name=" + this.name
                 + ", pasport id=" + this.passportID
                 + ", eye color=" + this.eyeColor
                 + ", hair color=" + this.hairColor

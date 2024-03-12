@@ -34,7 +34,7 @@ public class MaxByKiller extends Command{
                 }
             });
 
-            System.out.println(dragons.getLast().toString());
+            System.out.println(dragons.get(dragons.size()-1).toString());
         }
     }
 }
