@@ -6,6 +6,10 @@ import managers.CommandManager;
 import java.util.Collection;
 import java.util.Scanner;
 
+/**
+ * Команда help: выводит справку по доступным командам.
+ * @author Kseniya
+ */
 public class Help extends Command {
     private CommandManager commandManager;
 

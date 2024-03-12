@@ -7,22 +7,42 @@ import lombok.Getter;
 
 import java.util.Objects;
 
+/**
+ * Класс человека.
+ * @author Kseniya
+ */
 @Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
+    /** Имя */
     @XmlElement(name="name")
     private String name; //Поле не может быть null, Строка не может быть пустой
+    /** Паспортные данные */
     @XmlElement(name="passportID")
     private String passportID; //Значение этого поля должно быть уникальным, Поле может быть null
+    /** Цвет глаз */
     @XmlElement(name="eyeColor")
     private Color eyeColor; //Поле не может быть null
+    /** Цвет волосы */
     @XmlElement(name="hairColor")
     private Color hairColor; //Поле может быть null
+    /** Национальность */
     @XmlElement(name="nationality")
     private Country nationality; //Поле не может быть null
+    /** Количество убитых драконов */
     @XmlElement(name="countKilledDragons")
     private Long countKilledDragons; //Поле должно быть больше 0
 
+
+    /**
+     * Конструктор человека со всеми параметрами.
+     * @param name - имя
+     * @param passportID - паспортные данные
+     * @param eyeColor - цвет глаз
+     * @param hairColor - цвет волос
+     * @param nationality - науиональность
+     * @param countKilledDragons - количество убитых драконов
+     **/
     public Person(String name, String passportID, Color eyeColor, Color hairColor, Country nationality, Long countKilledDragons){
         this.name = name;
         this.passportID = passportID;
@@ -32,6 +52,9 @@ public class Person {
         this.countKilledDragons = countKilledDragons;
     }
 
+    /**
+     * Конструктор человека без параметров.
+     **/
     public Person(){}
 
     @Override

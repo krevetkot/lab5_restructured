@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Команда print_field_descending_age: выводит значения поля age всех элементов в порядке убывания.
+ * @author Kseniya
+ */
 public class PrintFieldDescendingAge extends Command{
     public PrintFieldDescendingAge(){
         super("print_field_descending_age", "вывести значения поля age всех элементов в порядке убывания", false);}

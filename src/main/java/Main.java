@@ -21,21 +21,26 @@ public class Main {
 
         try {
             CollectionManager.loadCollection(filename);
+
+            RuntimeManager.launch();
         }
-        catch (IOException | JAXBException | FailedBuildingException e){
+        catch (IOException | FailedBuildingException e){
             System.out.println(e.getMessage());
             System.out.println("Не удалось загрузить коллекцию.");
             System.exit(1);
         }
-
-        RuntimeManager.launch();
-
-        try {
-            Save save = new Save();
-            save.execute(filename, false, null);
-        } catch (IllegalValueException e){
-            System.out.println("Данные сохранены в файл (даже если вам этого не хотелось :) )");
+        catch (JAXBException e){
+            System.out.println("Файл поврежден. Не удалось загрузить коллекцию.");
         }
+
+
+
+//        try {
+//            Save save = new Save();
+//            save.execute(filename, false, null);
+//        } catch (IllegalValueException e){
+//            System.out.println("Данные сохранены в файл (даже если вам этого не хотелось :) )");
+//        }
 
     }
 }

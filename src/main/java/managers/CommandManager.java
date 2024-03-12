@@ -1,13 +1,19 @@
 package managers;
 
 import commands.*;
-
+import lombok.Getter;
 import java.util.LinkedHashMap;
 
+/**
+ * Класс, управляющий командами {@link Command}.
+ * @author Kseniya
+ */
+@Getter
 public class CommandManager {
-
+    /** Коллекция команд, где ключ - название команды, значение - ссылка на экземпляр класса */
     private LinkedHashMap<String, Command> commandMap;
 
+    /** Конструктор, в котором в коллекцию менеджера добавляются все доступные команды. */
     public CommandManager(){
         commandMap = new LinkedHashMap<>();
 
@@ -27,14 +33,5 @@ public class CommandManager {
         commandMap.put("reorder", new Reorder());
         commandMap.put("max_by_killer", new MaxByKiller());
         commandMap.put("filter_less_than_killer", new FilterLessThanKiller());
-
-        //переделать, чтобы чел сам узнавал, какие у нас есть команды йоу йоу
-        //интересно это можно сделать так: узнать все названия классов в пакете коммандс ?
     }
-
-    public LinkedHashMap<String, Command> getCommandMap(){
-        return commandMap;
-    }
-
-
 }

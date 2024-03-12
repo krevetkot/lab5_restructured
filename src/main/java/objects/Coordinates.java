@@ -7,19 +7,33 @@ import lombok.Getter;
 
 import java.util.Objects;
 
+/**
+ * Класс координат.
+ * @author Kseniya
+ */
 @Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Coordinates {
+    /** Координата X */
     @XmlElement(name="x")
     private Long x; //Поле не может быть null
+    /** Координата Y */
     @XmlElement(name="y")
     private float y;
 
+    /**
+     * Конструктор координат со всеми параметрами.
+     * @param x - координата Х
+     * @param y - координата Y
+     **/
     public Coordinates(Long x, float y){
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * Конструктор координат без параметров.
+     **/
     public Coordinates(){}
 
     @Override

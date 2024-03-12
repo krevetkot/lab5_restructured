@@ -11,8 +11,18 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Класс для формирования объектов типа {@link Coordinates}.
+ * @author Kseniya
+ */
 public class CoordinatesForm extends Form<Coordinates>{
 
+    /**
+     * Собирает объект класса {@link Coordinates}.
+     * @throws IllegalValueException - при недопустимом значении в одном из полей
+     * @throws FailedBuildingException - при ошибке сборки
+     * @return новый объект класса {@link Coordinates}.
+     */
     @Override
     public Coordinates build(Scanner scanner, boolean fileMode) throws IllegalValueException, FailedBuildingException {
         Long x = askLong(scanner, fileMode, "координату х", false);

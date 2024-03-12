@@ -7,9 +7,17 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Класс, реализующий запуск приложения.
+ * @author Kseniya
+ */
 public class RuntimeManager {
+    /** Менеджер команд */
     private static CommandManager commandManager;
 
+    /**
+     * Запускает приложение. Запрашивает ввод команд, запускает их выполнение.
+     */
     public static void launch() {
         System.out.println("Приветствуем Вас в приложении по управлению коллекцией! Введите \'help\' для вывода доступных команд.");
         commandManager = new CommandManager();
@@ -38,6 +46,10 @@ public class RuntimeManager {
 
     }
 
+    /**
+     * Обрабатывает полученную команду, чтобы вызвать ее выполнение.
+     * @throws IllegalValueException - ошибка недопустимых данных, команду невозможно выполнить
+     */
     public static void commandProcessing(String[] listRequest, boolean fileMode, Scanner scanner) throws IllegalValueException {
         if (commandManager.getCommandMap().containsKey(listRequest[0])) {
             Command command = commandManager.getCommandMap().get(listRequest[0]);

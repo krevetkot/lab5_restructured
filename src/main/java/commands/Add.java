@@ -11,10 +11,13 @@ import objects.forms.DragonForm;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Команда add {element}: добавляет новый элемент в коллекцию.
+ * @author Kseniya
+ */
 public class Add extends Command {
-
     public Add(){
-        super("add", "добавить новый элемент в коллекцию", false);
+        super("add", " {element}: добавить новый элемент в коллекцию", false);
     }
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException {

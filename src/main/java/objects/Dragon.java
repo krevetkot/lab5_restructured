@@ -13,34 +13,55 @@ import managers.IDManager;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * Класс дракона.
+ * @author Kseniya
+ */
 @Getter
 @Setter
 @XmlRootElement(name = "dragon")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Dragon implements Comparable{
+    /** Идентификатор дракона */
     @XmlElement(name="id")
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    /** Имя */
     @XmlElement(name="name")
     private String name; //Поле не может быть null, Строка не может быть пустой
+    /** Координаты местоположения */
     @XmlElement(name="coordinates")
     private Coordinates coordinates; //Поле не может быть null
-
+    /** Дата создания */
     @XmlElement(name = "creationDate", required = true)
     @XmlJavaTypeAdapter(DateAdapter.class)
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-
+    /** Возраст */
     @XmlElement(name="age")
     private Long age; //Значение поля должно быть больше 0, Поле не может быть null
+    /** Вес */
     @XmlElement(name="weight")
     private Long weight; //Значение поля должно быть больше 0, Поле не может быть null
+    /** Умеет ли говорить дракон */
     @XmlElement(name="speaking")
     private boolean speaking;
+    /** Тип дракона */
     @XmlElement(name="type")
     private DragonType type; //Поле может быть null
+    /** Убийца дракона */
     @XmlElement(name="killer")
     private Person killer; //Поле может быть null
 
-    //without id and date
+    /**
+     * Конструктор дракона со всеми параметрами, исключаяя id и дату создания.
+     * Используется для создания нового дракона.
+     * @param name - имя
+     * @param coordinates - координаты местоположения
+     * @param age - возраст
+     * @param weight - вес
+     * @param speaking - умеет ли говорить
+     * @param type - тип дракона
+     * @param killer - убийца дракона
+     **/
     public Dragon(String name, Coordinates coordinates, Long age, Long weight, boolean speaking, DragonType type, Person killer){
         this.id = IDManager.generateID();
         this.name = name;
@@ -53,7 +74,18 @@ public class Dragon implements Comparable{
         this.killer = killer;
     }
 
-    //with all fields
+    /**
+     * Конструктор дракона со всеми параметрами. Используется для считывания данных из файла.
+     * @param id - идентификатор
+     * @param name - имя
+     * @param coordinates - координаты местоположения
+     * @param creationDate - дата создания
+     * @param age - возраст
+     * @param weight - вес
+     * @param speaking - умеет ли говорить
+     * @param type - тип дракона
+     * @param killer - убийца дракона
+     **/
     public Dragon(int id, String name, Coordinates coordinates, LocalDate creationDate, Long age, Long weight, boolean speaking, DragonType type, Person killer){
         this.id = id;
         this.name = name;
@@ -66,6 +98,9 @@ public class Dragon implements Comparable{
         this.killer = killer;
     }
 
+    /**
+     * Конструктор дракона без параметров.
+     **/
     public Dragon(){}
 
     @Override

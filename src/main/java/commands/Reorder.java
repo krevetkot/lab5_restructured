@@ -6,6 +6,10 @@ import managers.CollectionManager;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Команда reorder: отсортировывает коллекцию в порядке, обратном нынешнему.
+ * @author Kseniya
+ */
 public class Reorder extends Command{
     public Reorder(){
         super("reorder", "отсортировать коллекцию в порядке, обратном нынешнему", false);

@@ -11,9 +11,13 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Команда update id {element}: обновляет значение элемента коллекции, id которого равен заданному.
+ * @author Kseniya
+ */
 public class Update extends Command{
     public Update(){
-        super("update", "обновить значение элемента коллекции, id которого равен заданному", true);
+        super("update", "id {element}: обновить значение элемента коллекции, id которого равен заданному", true);
     }
 
     @Override

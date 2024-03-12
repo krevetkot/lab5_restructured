@@ -7,6 +7,10 @@ import managers.CollectionManager;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Команда save: сохраняет коллекцию в файл.
+ * @author Kseniya
+ */
 public class Save extends Command{
     public Save(){
         super("save", "сохранить коллекцию в файл", false);

@@ -7,6 +7,10 @@ import managers.CollectionManager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Команда show: выводит в стандартный поток вывода все элементы коллекции в строковом представлении.
+ * @author Kseniya
+ */
 public class Show extends Command {
     public Show(){
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", false);

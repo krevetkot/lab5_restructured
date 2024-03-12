@@ -11,9 +11,13 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Команда insert_at index {element}: добавляет новый элемент в заданную позицию.
+ * @author Kseniya
+ */
 public class InsertAt extends Command{
     public InsertAt(){
-        super("insert_at", "добавить новый элемент в заданную позицию", true);
+        super("insert_at", "index {element}: добавить новый элемент в заданную позицию", true);
     }
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner)

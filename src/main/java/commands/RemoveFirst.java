@@ -5,6 +5,10 @@ import managers.CollectionManager;
 
 import java.util.Scanner;
 
+/**
+ * Команда remove_first: удаляет удалить первый элемент из коллекции.
+ * @author Kseniya
+ */
 public class RemoveFirst extends Command{
     public RemoveFirst(){
         super("remove_first", "удалить первый элемент из коллекции", false);}

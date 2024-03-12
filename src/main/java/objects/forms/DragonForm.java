@@ -13,9 +13,17 @@ import objects.Person;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Класс для формирования объектов типа {@link Dragon}.
+ * @author Kseniya
+ */
 public class DragonForm extends Form<Dragon> {
-    //visibility true, когда мы работаем с консольным вводом
-    //visibility false, когда мы работаем с файловым вводом
+    /**
+     * Собирает объект класса {@link Dragon}.
+     * @throws IllegalValueException - при недопустимом значении в одном из полей
+     * @throws FailedBuildingException - при ошибке сборки
+     * @return новый объект класса {@link Dragon}.
+     */
     @Override
     public Dragon build(Scanner scanner, boolean fileMode) throws IllegalValueException, FailedBuildingException {
         Console.print("Введите данные о драконе.", fileMode);

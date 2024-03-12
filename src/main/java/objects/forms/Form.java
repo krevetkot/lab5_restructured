@@ -3,15 +3,38 @@ package objects.forms;
 import exceptions.FailedBuildingException;
 import exceptions.IllegalValueException;
 import managers.Console;
+import objects.Coordinates;
 import objects.DragonType;
 
 import java.util.Scanner;
 import java.util.function.Predicate;
 
+/**
+ * Абстрактный класс для формирования объектов.
+ * @param <T> Класс формируемого объекта
+ * @author Kseniya
+ */
 public abstract class Form<T> {
 
+    /**
+     * Собирает объект класса.
+     * @throws IllegalValueException - при недопустимом значении в одном из полей
+     * @throws FailedBuildingException - при ошибке сборки
+     * @return новый объект класса T
+     */
     public abstract T build(Scanner scanner, boolean fileMode) throws IllegalValueException, FailedBuildingException;
 
+    /**
+     * Формирует объект класса Enum.
+     * @param scanner - используемый сканер
+     * @param fileMode - режим ввода: если true, значит данные принимаются из файла,
+     *                 если false, данные принимаются интерактивно из консоли
+     * @param values - массив значений перечисления
+     * @param enumName - название класса Enum
+     * @param canBeNull - может ли сформированный объект быть null
+     * @throws IllegalValueException - пробрасывается при недопустимом значении
+     * @return сформированный объект класса Enum
+     */
     public static Enum askEnum(Scanner scanner, boolean fileMode, Enum[] values, String enumName, boolean canBeNull)
             throws IllegalValueException{
         Console.print("Введите " + enumName + ". Возможные варианты: ", fileMode);
@@ -38,7 +61,16 @@ public abstract class Form<T> {
         }
     }
 
-    //параметр greaterthanzero означает, нужна ли нам проверка, что число больше нуля, или не нужна
+    /**
+     * Формирует число типа Long.
+     * @param scanner - используемый сканер
+     * @param fileMode - режим ввода: если true, значит данные принимаются из файла,
+     *                 если false, данные принимаются интерактивно из консоли
+     * @param name - название класса Enum
+     * @param greaterThanZero - должно ли сформированное число быть больше нуля
+     * @throws IllegalValueException - пробрасывается при недопустимом значении
+     * @return сформированное число типа Long
+     */
     public static Long askLong(Scanner scanner, boolean fileMode, String name, Boolean greaterThanZero)
             throws IllegalValueException{
         Console.print("Введите " + name + ":", fileMode);
@@ -68,6 +100,15 @@ public abstract class Form<T> {
         }
     }
 
+    /**
+     * Формирует значение типа Boolean.
+     * @param scanner - используемый сканер
+     * @param fileMode - режим ввода: если true, значит данные принимаются из файла,
+     *                 если false, данные принимаются интерактивно из консоли
+     * @param name - название класса Enum
+     * @throws IllegalValueException - пробрасывается при недопустимом значении
+     * @return сформированное значение типа Boolean
+     */
     public static Boolean askBoolean(Scanner scanner, boolean fileMode, String name) throws IllegalValueException{
         Console.print("Введите " + name + ":", fileMode);
         String str = null;
@@ -83,6 +124,15 @@ public abstract class Form<T> {
         }
     }
 
+    /**
+     * Формирует число типа float.
+     * @param scanner - используемый сканер
+     * @param fileMode - режим ввода: если true, значит данные принимаются из файла,
+     *                 если false, данные принимаются интерактивно из консоли
+     * @param name - название класса Enum
+     * @throws IllegalValueException - пробрасывается при недопустимом значении
+     * @return сформированное число типа float
+     */
     public static float askFloat(Scanner scanner, boolean fileMode, String name) throws IllegalValueException{
         Console.print("Введите " + name + ":", fileMode);
         while (true) {
@@ -100,6 +150,16 @@ public abstract class Form<T> {
         }
     }
 
+    /**
+     * Формирует строку.
+     * @param scanner - используемый сканер
+     * @param fileMode - режим ввода: если true, значит данные принимаются из файла,
+     *                 если false, данные принимаются интерактивно из консоли
+     * @param name - название класса Enum
+     * @param canBeEmpty - может ли строка быть пустой
+     * @throws IllegalValueException - пробрасывается при недопустимом значении
+     * @return сформированная строка
+     */
     public static String askString(Scanner scanner, boolean fileMode, String name, boolean canBeEmpty) throws IllegalValueException{
         Console.print("Введите " + name + ":", fileMode);
         while(true){

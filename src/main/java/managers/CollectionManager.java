@@ -8,18 +8,30 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import exceptions.FailedBuildingException;
+import lombok.Setter;
 import objects.*;
 
 import jakarta.xml.bind.*;
 import objects.forms.DragonsForParsing;
 
-//import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
-
-
+/**
+ * Класс, управляющий коллекцией элементов типа {@link Dragon}.
+ * @author Kseniya
+ */
 public class CollectionManager {
+    /** Коллекция */
     private static ArrayList<Dragon> collectionOfDragons;
+    /** Название файла типа xml, используемого при загрузке и сохранении коллекции */
+    @Setter
     private static String fileName;
 
+    /**
+     * Загружает коллекцию из файла. Вызывается при открытии приложения.
+     * @param filename - название файла типа xml, из которого происходит загрузка
+     * @throws IOException - ошибка открытия файла/доступа к файлу/отсутствие файла/невалидный путь
+     * @throws JAXBException - ошибка парсинга
+     * @throws FailedBuildingException - ошибка сборки объектов
+     */
     public static void loadCollection(String filename) throws IOException, JAXBException, FailedBuildingException {
         CollectionManager.setFileName(filename);
 
@@ -55,6 +67,11 @@ public class CollectionManager {
 
     }
 
+    /**
+     * Сохраняет коллекцию в файл.
+     * @throws IOException - ошибка открытия файла/доступа к файлу/отсутствие файла/невалидный путь
+     * @throws JAXBException - ошибка парсинга
+     */
     public static void saveCollection() throws JAXBException, IOException {
         DragonsForParsing dragons = new DragonsForParsing();
         dragons.setCollectionOfDragons(collectionOfDragons);
@@ -70,10 +87,10 @@ public class CollectionManager {
 
     }
 
-    public static void setFileName(String fileName) {
-        CollectionManager.fileName = fileName;
-    }
-
+    /**
+     * Возвращает экземпляр коллекции. Если коллекция еще не инициализирована - инициализирует.
+     * @return экземпляр коллекции
+     */
     public static ArrayList<Dragon> getCollection(){
         if (collectionOfDragons==null){
             collectionOfDragons = new ArrayList<Dragon>();
@@ -81,10 +98,10 @@ public class CollectionManager {
         return collectionOfDragons;
     }
 
-//    public static void addElementToCollection(Dragon value){
-//        getCollection().add(value);
-//    }
-
+    /**
+     * Возвращает элемент коллекции по его идентификатору.
+     * @param id - идентификатор
+     */
     public static Dragon getById(long id){
         return collectionOfDragons.stream().filter(x -> x.getId() == id).findAny().orElse(null);
     }

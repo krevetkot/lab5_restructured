@@ -9,6 +9,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Команда max_by_killer: выводит любой объект из коллекции, значение поля killer которого является максимальным.
+ * @author Kseniya
+ */
 public class MaxByKiller extends Command{
     public MaxByKiller(){
         super("max_by_killer", "вывести любой объект из коллекции, значение поля killer которого является максимальным", false);

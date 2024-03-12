@@ -6,6 +6,10 @@ import managers.Console;
 
 import java.util.Scanner;
 
+/**
+ * Команда clear: очищает коллекцию.
+ * @author Kseniya
+ */
 public class Clear extends Command{
     public Clear(){
         super("clear", "очистить коллекцию", false);}

@@ -1,11 +1,17 @@
 package managers;
 
 import objects.Dragon;
-
 import java.util.ArrayList;
 
+/**
+ * Класс, работающий с идентификаторами.
+ * @author Kseniya
+ */
 public abstract class IDManager {
 
+    /**
+     * Генерирует восьмизначный идентификатор для дракона.
+     */
     public static int generateID(){
         ArrayList<Dragon> collection = CollectionManager.getCollection();
         boolean flag = true;
@@ -21,9 +27,13 @@ public abstract class IDManager {
                 return res;
             }
         }
-
     }
 
+    /**
+     * Проверяет паспортные данные человека на уникальность.
+     * @param passportID - паспортные данные человека
+     * @return - уникальность
+     */
     public static boolean passportIDisUnique(String passportID){
         ArrayList<Dragon> collection = CollectionManager.getCollection();
         boolean flag = true;
@@ -36,6 +46,11 @@ public abstract class IDManager {
         return flag;
     }
 
+    /**
+     * Проверяет идентификатор дракона на уникальность.
+     * @param dragonID - идентификатор дракона
+     * @return - уникальность
+     */
     public static boolean dragonIDisUnique(int dragonID){
         ArrayList<Dragon> collection = CollectionManager.getCollection();
         boolean flag = true;

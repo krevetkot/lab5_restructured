@@ -2,6 +2,10 @@ package objects;
 
 import lombok.Getter;
 
+/**
+ * Перечисление типов дракона.
+ * @author Kseniya
+ */
 public enum DragonType {
     WATER("WATER"),
     UNDERGROUND("UNDERGROUND"),

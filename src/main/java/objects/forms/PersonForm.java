@@ -5,18 +5,22 @@ import exceptions.IllegalValueException;
 import managers.Console;
 import managers.IDManager;
 import managers.Validator;
-import objects.Color;
-import objects.Country;
-import objects.Dragon;
-import objects.Person;
+import objects.*;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Класс для формирования объектов типа {@link Person}.
+ * @author Kseniya
+ */
 public class PersonForm extends Form<Person>{
-
-    //fileMode true, когда мы работаем с консольным вводом
-    //fileMode false, когда мы работаем с файловым вводом
+    /**
+     * Собирает объект класса {@link Person}.
+     * @throws IllegalValueException - при недопустимом значении в одном из полей
+     * @throws FailedBuildingException - при ошибке сборки
+     * @return новый объект класса {@link Person}.
+     */
     @Override
     public Person build(Scanner scanner, boolean fileMode) throws IllegalValueException, FailedBuildingException {
         Console.print("Введите данные об убийце дракона.", fileMode);

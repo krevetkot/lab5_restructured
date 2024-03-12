@@ -12,10 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Команда execute_file file_name: считает и исполняет скрипт из указанного файла.
+ * @author Kseniya
+ */
 public class ExecuteFile extends Command{
     private CommandManager commandManager;
     public ExecuteFile(CommandManager commandManager){
-        super("execute_file", "считать и исполнить скрипт из указанного файла", true);
+        super("execute_file", "file_name: считать и исполнить скрипт из указанного файла", true);
         this.commandManager = commandManager;
     }
 

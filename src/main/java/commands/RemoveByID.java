@@ -7,9 +7,13 @@ import objects.Dragon;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Команда remove_by_id id: удаляет элемент из коллекции по его id.
+ * @author Kseniya
+ */
 public class RemoveByID extends Command{
     public RemoveByID(){
-        super("remove_by_id", "удалить элемент из коллекции по его id", true);}
+        super("remove_by_id", "id: удалить элемент из коллекции по его id", true);}
 
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException, NoSuchElementException, NumberFormatException{

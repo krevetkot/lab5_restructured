@@ -8,9 +8,13 @@ import objects.Dragon;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Команда filter_less_than_killer: killer: выводит элементы, значение поля killer которых меньше заданного.
+ * @author Kseniya
+ */
 public class FilterLessThanKiller extends Command{
     public FilterLessThanKiller(){
-        super("filter_less_than_killer", "вывести элементы, значение поля killer которых меньше заданного", true);
+        super("filter_less_than_killer", "killer: вывести элементы, значение поля killer которых меньше заданного", true);
     }
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException, NumberFormatException, NoSuchElementException{

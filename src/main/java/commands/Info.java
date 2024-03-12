@@ -5,6 +5,10 @@ import managers.*;
 
 import java.util.Scanner;
 
+/**
+ * Команда info: выводит в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.).
+ * @author Kseniya
+ */
 public class Info extends Command {
 
     public Info(){
