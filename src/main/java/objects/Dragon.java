@@ -15,54 +15,74 @@ import java.util.Objects;
 
 /**
  * Класс дракона.
+ *
  * @author Kseniya
  */
 @Getter
 @Setter
 @XmlRootElement(name = "dragon")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Dragon implements Comparable{
-    /** Идентификатор дракона */
-    @XmlElement(name="id")
+public class Dragon implements Comparable {
+    /**
+     * Идентификатор дракона
+     */
+    @XmlElement(name = "id")
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    /** Имя */
-    @XmlElement(name="name")
+    /**
+     * Имя
+     */
+    @XmlElement(name = "name")
     private String name; //Поле не может быть null, Строка не может быть пустой
-    /** Координаты местоположения */
-    @XmlElement(name="coordinates")
+    /**
+     * Координаты местоположения
+     */
+    @XmlElement(name = "coordinates")
     private Coordinates coordinates; //Поле не может быть null
-    /** Дата создания */
+    /**
+     * Дата создания
+     */
     @XmlElement(name = "creationDate", required = true)
     @XmlJavaTypeAdapter(DateAdapter.class)
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    /** Возраст */
-    @XmlElement(name="age")
+    /**
+     * Возраст
+     */
+    @XmlElement(name = "age")
     private Long age; //Значение поля должно быть больше 0, Поле не может быть null
-    /** Вес */
-    @XmlElement(name="weight")
+    /**
+     * Вес
+     */
+    @XmlElement(name = "weight")
     private Long weight; //Значение поля должно быть больше 0, Поле не может быть null
-    /** Умеет ли говорить дракон */
-    @XmlElement(name="speaking")
+    /**
+     * Умеет ли говорить дракон
+     */
+    @XmlElement(name = "speaking")
     private boolean speaking;
-    /** Тип дракона */
-    @XmlElement(name="type")
+    /**
+     * Тип дракона
+     */
+    @XmlElement(name = "type", required = true, nillable = true)
     private DragonType type; //Поле может быть null
-    /** Убийца дракона */
-    @XmlElement(name="killer")
+    /**
+     * Убийца дракона
+     */
+    @XmlElement(name = "killer", required = true, nillable = true)
     private Person killer; //Поле может быть null
 
     /**
      * Конструктор дракона со всеми параметрами, исключаяя id и дату создания.
      * Используется для создания нового дракона.
-     * @param name - имя
+     *
+     * @param name        - имя
      * @param coordinates - координаты местоположения
-     * @param age - возраст
-     * @param weight - вес
-     * @param speaking - умеет ли говорить
-     * @param type - тип дракона
-     * @param killer - убийца дракона
+     * @param age         - возраст
+     * @param weight      - вес
+     * @param speaking    - умеет ли говорить
+     * @param type        - тип дракона
+     * @param killer      - убийца дракона
      **/
-    public Dragon(String name, Coordinates coordinates, Long age, Long weight, boolean speaking, DragonType type, Person killer){
+    public Dragon(String name, Coordinates coordinates, Long age, Long weight, boolean speaking, DragonType type, Person killer) {
         this.id = IDManager.generateID();
         this.name = name;
         this.coordinates = coordinates;
@@ -76,17 +96,18 @@ public class Dragon implements Comparable{
 
     /**
      * Конструктор дракона со всеми параметрами. Используется для считывания данных из файла.
-     * @param id - идентификатор
-     * @param name - имя
-     * @param coordinates - координаты местоположения
+     *
+     * @param id           - идентификатор
+     * @param name         - имя
+     * @param coordinates  - координаты местоположения
      * @param creationDate - дата создания
-     * @param age - возраст
-     * @param weight - вес
-     * @param speaking - умеет ли говорить
-     * @param type - тип дракона
-     * @param killer - убийца дракона
+     * @param age          - возраст
+     * @param weight       - вес
+     * @param speaking     - умеет ли говорить
+     * @param type         - тип дракона
+     * @param killer       - убийца дракона
      **/
-    public Dragon(int id, String name, Coordinates coordinates, LocalDate creationDate, Long age, Long weight, boolean speaking, DragonType type, Person killer){
+    public Dragon(int id, String name, Coordinates coordinates, LocalDate creationDate, Long age, Long weight, boolean speaking, DragonType type, Person killer) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -101,11 +122,12 @@ public class Dragon implements Comparable{
     /**
      * Конструктор дракона без параметров.
      **/
-    public Dragon(){}
+    public Dragon() {
+    }
 
     @Override
-    public String toString(){
-        if (killer == null){
+    public String toString() {
+        if (killer == null) {
             return this.getClass().getName() + '{'
                     + "id=" + this.id
                     + ", name=" + this.name
@@ -134,13 +156,13 @@ public class Dragon implements Comparable{
     @Override
     public int compareTo(Object o) {
         Dragon anotherDragon = (Dragon) o;
-        return (int)((getCoordinates().getX()*getCoordinates().getX() + getCoordinates().getY()*getCoordinates().getY())
-                        - (anotherDragon.getCoordinates().getX()*anotherDragon.getCoordinates().getX() +
-                        anotherDragon.getCoordinates().getY()*anotherDragon.getCoordinates().getY()));
+        return (int) ((getCoordinates().getX() * getCoordinates().getX() + getCoordinates().getY() * getCoordinates().getY())
+                - (anotherDragon.getCoordinates().getX() * anotherDragon.getCoordinates().getX() +
+                anotherDragon.getCoordinates().getY() * anotherDragon.getCoordinates().getY()));
     }
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -148,6 +170,45 @@ public class Dragon implements Comparable{
         if (this.getClass() != obj.getClass())
             return false;
         Dragon dragon = (Dragon) obj;
+        if (this.killer == null && dragon.killer == null) {
+            if (this.type == null && dragon.type == null) {
+                return this.id == dragon.getId()
+                        && this.name.equals(dragon.getName())
+                        && this.coordinates.equals(dragon.getCoordinates())
+                        && this.creationDate.equals(dragon.getCreationDate())
+                        && Objects.equals(this.age, dragon.getAge())
+                        && Objects.equals(this.weight, dragon.getWeight())
+                        && this.speaking == dragon.getSpeaking();
+            }
+            if (this.type == null || dragon.type == null) {
+                return false;
+            }
+            return this.id == dragon.getId()
+                    && this.name.equals(dragon.getName())
+                    && this.coordinates.equals(dragon.getCoordinates())
+                    && this.creationDate.equals(dragon.getCreationDate())
+                    && Objects.equals(this.age, dragon.getAge())
+                    && Objects.equals(this.weight, dragon.getWeight())
+                    && this.speaking == dragon.getSpeaking()
+                    && this.type == dragon.getType();
+
+        }
+        if (this.type == null && dragon.type == null) {
+            return this.id == dragon.getId()
+                    && this.name.equals(dragon.getName())
+                    && this.coordinates.equals(dragon.getCoordinates())
+                    && this.creationDate.equals(dragon.getCreationDate())
+                    && Objects.equals(this.age, dragon.getAge())
+                    && Objects.equals(this.weight, dragon.getWeight())
+                    && this.speaking == dragon.getSpeaking();
+        }
+        if (this.type == null || dragon.type == null) {
+            return false;
+        }
+
+        if (this.killer == null || dragon.killer == null) {
+            return false;
+        }
         return this.id == dragon.getId()
                 && this.name.equals(dragon.getName())
                 && this.coordinates.equals(dragon.getCoordinates())
@@ -159,12 +220,12 @@ public class Dragon implements Comparable{
                 && this.killer.equals(dragon.getKiller());
     }
 
-    public boolean getSpeaking(){
+    public boolean getSpeaking() {
         return this.speaking;
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int hash = 31;
         hash = hash * 17 + name.hashCode();
         hash = hash * 17 + id;
@@ -172,11 +233,15 @@ public class Dragon implements Comparable{
         hash = hash * 17 + creationDate.hashCode();
         hash = hash * 17 + age.hashCode();
         hash = hash * 17 + weight.hashCode();
-        if (speaking){
+        if (speaking) {
             hash = hash * 17 + 1;
         }
-        hash = hash * 17 + type.getName().hashCode();
-        hash = hash * 17 + killer.hashCode();
+        if (type != null) {
+            hash = hash * 17 + type.getName().hashCode();
+        }
+        if (killer != null) {
+            hash = hash * 17 + killer.hashCode();
+        }
         return hash;
     }
 }

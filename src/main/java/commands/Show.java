@@ -9,24 +9,24 @@ import java.util.Scanner;
 
 /**
  * Команда show: выводит в стандартный поток вывода все элементы коллекции в строковом представлении.
+ *
  * @author Kseniya
  */
 public class Show extends Command {
-    public Show(){
+    public Show() {
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", false);
     }
 
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException {
         ArrayList<Dragon> collection = CollectionManager.getCollection();
-        if (collection.isEmpty()){
+        if (collection.isEmpty()) {
             System.out.println("Коллекция пуста.");
         }
-        for (Dragon element: collection){
+        for (Dragon element : collection) {
             try {
                 System.out.println(element.toString());
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }

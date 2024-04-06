@@ -14,29 +14,31 @@ import java.util.Scanner;
 
 /**
  * Команда execute_file file_name: считает и исполняет скрипт из указанного файла.
+ *
  * @author Kseniya
  */
-public class ExecuteFile extends Command{
-    private CommandManager commandManager;
-    public ExecuteFile(CommandManager commandManager){
+public class ExecuteFile extends Command {
+
+    public ExecuteFile() {
         super("execute_file", "file_name: считать и исполнить скрипт из указанного файла", true);
-        this.commandManager = commandManager;
     }
 
 
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException {
         try {
-
+            if (new File(argument).getAbsolutePath().equals("/dev/zero")){
+                throw new IOException("/dev/zero");
+            }
             ScriptManager.addFile(argument);
             BufferedReader br = ScriptManager.getBufferedReaders().getLast();
             Scanner fileScanner = new Scanner(br);
             String line;
 
-            Console.print("------ Выполняется файл " + argument  + " ------", false);
+            Console.print("------ Выполняется файл " + argument + " ------", false);
             while (!(line = ScriptManager.nextLine(fileScanner)).isBlank()) {
                 String[] command = line.split(" ");
-                if (command[0].equals("execute_file")) {
+                if (command[0].equals(getName())) {
                     if (ScriptManager.isRecursive(command[1])) {
                         throw new RuntimeException("Найдена рекурсия! Повторно вызывается файл " + command[1]);
                     }
@@ -44,7 +46,7 @@ public class ExecuteFile extends Command{
 
                 try {
                     RuntimeManager.commandProcessing(command, true, fileScanner);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                     break;
                 }
@@ -59,7 +61,7 @@ public class ExecuteFile extends Command{
             return;
         }
 
-        System.out.println("------ Выполнение файла " + argument +  " завершено ------");
+        System.out.println("------ Выполнение файла " + argument + " завершено ------");
     }
 
 }

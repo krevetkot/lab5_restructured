@@ -10,26 +10,27 @@ import java.util.Scanner;
 
 /**
  * Команда filter_less_than_killer: killer: выводит элементы, значение поля killer которых меньше заданного.
+ *
  * @author Kseniya
  */
-public class FilterLessThanKiller extends Command{
-    public FilterLessThanKiller(){
+public class FilterLessThanKiller extends Command {
+    public FilterLessThanKiller() {
         super("filter_less_than_killer", "killer: вывести элементы, значение поля killer которых меньше заданного", true);
     }
+
     @Override
-    public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException, NumberFormatException, NoSuchElementException{
-        if (CollectionManager.getCollection().isEmpty()){
+    public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException, NumberFormatException, NoSuchElementException {
+        if (CollectionManager.getCollection().isEmpty()) {
             Console.print("Коллекция пуста.", fileMode);
-        }
-        else {
+        } else {
             Long killer = Long.parseLong(argument);
 
-            if (killer<=0){
+            if (killer <= 0) {
                 throw new NoSuchElementException("Агрумент killer должен быть больше нуля.");
             }
             boolean flag = true;
-            for (Dragon element: CollectionManager.getCollection()){
-                if (element.getKiller()!=null) {
+            for (Dragon element : CollectionManager.getCollection()) {
+                if (element.getKiller() != null) {
                     if (element.getKiller().getCountKilledDragons() < killer) {
                         System.out.println(element);
                         flag = false;

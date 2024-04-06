@@ -4,6 +4,7 @@ import lombok.Getter;
 
 /**
  * Перечисление типов дракона.
+ *
  * @author Kseniya
  */
 public enum DragonType {
@@ -15,11 +16,12 @@ public enum DragonType {
     @Getter
     private final String name;
 
-    DragonType(String name){
+    DragonType(String name) {
         this.name = name;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

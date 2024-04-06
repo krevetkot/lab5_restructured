@@ -13,7 +13,7 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length == 0){
+        if (args.length == 0) {
             System.out.println("Вы не указали имя файла. Запуск невозможен.");
             System.exit(1);
         }
@@ -23,24 +23,18 @@ public class Main {
             CollectionManager.loadCollection(filename);
 
             RuntimeManager.launch();
-        }
-        catch (IOException | FailedBuildingException e){
+        } catch (IOException | FailedBuildingException e) {
             System.out.println(e.getMessage());
             System.out.println("Не удалось загрузить коллекцию.");
             System.exit(1);
-        }
-        catch (JAXBException e){
+        } catch (JAXBException e) {
             System.out.println("Файл поврежден. Не удалось загрузить коллекцию.");
+            System.exit(1);
+        } catch (Exception e) {
+            System.out.println("Не удалось загрузить коллекцию.");
+            System.exit(1);
         }
 
-
-
-//        try {
-//            Save save = new Save();
-//            save.execute(filename, false, null);
-//        } catch (IllegalValueException e){
-//            System.out.println("Данные сохранены в файл (даже если вам этого не хотелось :) )");
-//        }
 
     }
 }

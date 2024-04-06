@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Класс для обертки объектов {@link objects.Dragon} в массив при парсинге из файла.
+ *
  * @author Kseniya
  */
 @Getter
@@ -16,8 +17,10 @@ import java.util.ArrayList;
 @XmlRootElement(name = "dragons")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DragonsForParsing {
-    /** Массив драконов */
-    @XmlElement(name="dragon", type = Dragon.class)
+    /**
+     * Массив драконов
+     */
+    @XmlElement(name = "dragon", type = Dragon.class)
     private ArrayList<Dragon> collectionOfDragons;
 
 }

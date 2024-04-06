@@ -9,24 +9,30 @@ import java.util.Objects;
 
 /**
  * Класс координат.
+ *
  * @author Kseniya
  */
 @Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Coordinates {
-    /** Координата X */
-    @XmlElement(name="x")
+    /**
+     * Координата X
+     */
+    @XmlElement(name = "x")
     private Long x; //Поле не может быть null
-    /** Координата Y */
-    @XmlElement(name="y")
+    /**
+     * Координата Y
+     */
+    @XmlElement(name = "y", required = true, nillable = true)
     private float y;
 
     /**
      * Конструктор координат со всеми параметрами.
+     *
      * @param x - координата Х
      * @param y - координата Y
      **/
-    public Coordinates(Long x, float y){
+    public Coordinates(Long x, float y) {
         this.x = x;
         this.y = y;
     }
@@ -34,10 +40,11 @@ public class Coordinates {
     /**
      * Конструктор координат без параметров.
      **/
-    public Coordinates(){}
+    public Coordinates() {
+    }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getClass().getName() + '{'
                 + "x=" + this.x
                 + ", y=" + this.y
@@ -45,7 +52,7 @@ public class Coordinates {
     }
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -57,7 +64,7 @@ public class Coordinates {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int hash = 31;
         hash = hash * 17 + x.hashCode();
         hash = hash * 17 + (int) y;

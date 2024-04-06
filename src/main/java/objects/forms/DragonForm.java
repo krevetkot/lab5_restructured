@@ -15,14 +15,16 @@ import java.util.Scanner;
 
 /**
  * Класс для формирования объектов типа {@link Dragon}.
+ *
  * @author Kseniya
  */
 public class DragonForm extends Form<Dragon> {
     /**
      * Собирает объект класса {@link Dragon}.
-     * @throws IllegalValueException - при недопустимом значении в одном из полей
-     * @throws FailedBuildingException - при ошибке сборки
+     *
      * @return новый объект класса {@link Dragon}.
+     * @throws IllegalValueException   - при недопустимом значении в одном из полей
+     * @throws FailedBuildingException - при ошибке сборки
      */
     @Override
     public Dragon build(Scanner scanner, boolean fileMode) throws IllegalValueException, FailedBuildingException {
@@ -39,12 +41,13 @@ public class DragonForm extends Form<Dragon> {
 
         boolean hasKiller = askBoolean(scanner, fileMode, "есть ли у дракона убийца (true/false)");
         Person killer = null;
-        if (hasKiller){PersonForm personForm = new PersonForm();
+        if (hasKiller) {
+            PersonForm personForm = new PersonForm();
             killer = personForm.build(scanner, fileMode);
         }
 
         Dragon newDragon = new Dragon(IDManager.generateID(), name, coords, LocalDate.now(), age, weight, speaking, type, killer);
-        if (!Validator.dragonValidation(newDragon)){
+        if (!Validator.dragonValidation(newDragon)) {
             throw new FailedBuildingException("Недопустимое значение в поле!", Dragon.class);
         }
         return newDragon;

@@ -13,26 +13,27 @@ import java.util.Scanner;
 
 /**
  * Команда add {element}: добавляет новый элемент в коллекцию.
+ *
  * @author Kseniya
  */
 public class Add extends Command {
-    public Add(){
+    public Add() {
         super("add", " {element}: добавить новый элемент в коллекцию", false);
     }
+
     @Override
     public void execute(String argument, boolean fileMode, Scanner scanner) throws IllegalValueException {
         DragonForm newDragon = new DragonForm();
         try {
             Dragon buildedDragon = newDragon.build(scanner, fileMode);
-            if (!CollectionManager.getCollection().contains(buildedDragon)){
+            if (!CollectionManager.getCollection().contains(buildedDragon)) {
                 CollectionManager.getCollection().add(buildedDragon);
                 Collections.sort(CollectionManager.getCollection());
                 Console.print("Спасибо, ваши данные приняты!", fileMode);
-            }
-            else {
+            } else {
                 Console.print("Такой дракон уже есть в коллекции.", false);
             }
-        } catch (FailedBuildingException e){
+        } catch (FailedBuildingException e) {
             Console.print(e.getMessage(), false);
         }
     }

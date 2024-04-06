@@ -9,41 +9,55 @@ import java.util.Objects;
 
 /**
  * Класс человека.
+ *
  * @author Kseniya
  */
 @Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
-    /** Имя */
-    @XmlElement(name="name")
+    /**
+     * Имя
+     */
+    @XmlElement(name = "name")
     private String name; //Поле не может быть null, Строка не может быть пустой
-    /** Паспортные данные */
-    @XmlElement(name="passportID")
+    /**
+     * Паспортные данные
+     */
+    @XmlElement(name = "passportID")
     private String passportID; //Значение этого поля должно быть уникальным, Поле может быть null
-    /** Цвет глаз */
-    @XmlElement(name="eyeColor")
+    /**
+     * Цвет глаз
+     */
+    @XmlElement(name = "eyeColor")
     private Color eyeColor; //Поле не может быть null
-    /** Цвет волосы */
-    @XmlElement(name="hairColor")
+    /**
+     * Цвет волосы
+     */
+    @XmlElement(name = "hairColor")
     private Color hairColor; //Поле может быть null
-    /** Национальность */
-    @XmlElement(name="nationality")
+    /**
+     * Национальность
+     */
+    @XmlElement(name = "nationality")
     private Country nationality; //Поле не может быть null
-    /** Количество убитых драконов */
-    @XmlElement(name="countKilledDragons")
+    /**
+     * Количество убитых драконов
+     */
+    @XmlElement(name = "countKilledDragons")
     private Long countKilledDragons; //Поле должно быть больше 0
 
 
     /**
      * Конструктор человека со всеми параметрами.
-     * @param name - имя
-     * @param passportID - паспортные данные
-     * @param eyeColor - цвет глаз
-     * @param hairColor - цвет волос
-     * @param nationality - науиональность
+     *
+     * @param name               - имя
+     * @param passportID         - паспортные данные
+     * @param eyeColor           - цвет глаз
+     * @param hairColor          - цвет волос
+     * @param nationality        - науиональность
      * @param countKilledDragons - количество убитых драконов
      **/
-    public Person(String name, String passportID, Color eyeColor, Color hairColor, Country nationality, Long countKilledDragons){
+    public Person(String name, String passportID, Color eyeColor, Color hairColor, Country nationality, Long countKilledDragons) {
         this.name = name;
         this.passportID = passportID;
         this.eyeColor = eyeColor;
@@ -55,10 +69,11 @@ public class Person {
     /**
      * Конструктор человека без параметров.
      **/
-    public Person(){}
+    public Person() {
+    }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getClass().getName() + '{'
                 + "name=" + this.name
                 + ", pasport id=" + this.passportID
@@ -70,7 +85,7 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -87,7 +102,7 @@ public class Person {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int hash = 31;
         hash = hash * 17 + name.hashCode();
         hash = hash * 17 + passportID.hashCode();

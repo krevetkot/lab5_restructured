@@ -10,18 +10,24 @@ import java.util.Scanner;
 
 /**
  * Менеджер скриптов.
+ *
  * @author Kseniya
  */
 public class ScriptManager {
-    /** Очередь выполняемых файлов */
+    /**
+     * Очередь выполняемых файлов
+     */
     @Getter
     private static final ArrayDeque<String> pathQueue = new ArrayDeque<>();
-    /** Очередь считанных буферизированных потоков из выполняемых файлов */
+    /**
+     * Очередь считанных буферизированных потоков из выполняемых файлов
+     */
     @Getter
     private static final ArrayDeque<BufferedReader> bufferedReaders = new ArrayDeque<>();
 
     /**
      * Добавляет файл и буфер в очереди.
+     *
      * @param fileName - имя файла
      * @throws FileNotFoundException - ошибка отсутствия файла/доступа к файлу
      */
@@ -32,20 +38,22 @@ public class ScriptManager {
 
     /**
      * Выявляет рекурсию в файле.
+     *
      * @param path - путь файла
      */
-    public static boolean isRecursive(String path){
+    public static boolean isRecursive(String path) {
         return pathQueue.contains(new File(path).getAbsolutePath());
     }
 
     /**
      * Считывает следующую строку.
+     *
      * @param scanner - используемый сканер
      */
     public static String nextLine(Scanner scanner) {
-        try{
+        try {
             return scanner.nextLine();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return "";
         }
     }

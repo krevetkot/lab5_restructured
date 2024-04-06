@@ -2,10 +2,12 @@ package managers;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * Класс, адаптирующий строку в дату при парсинге.
+ *
  * @author Kseniya
  */
 public class DateAdapter extends XmlAdapter<String, LocalDate> {
@@ -19,7 +21,7 @@ public class DateAdapter extends XmlAdapter<String, LocalDate> {
 
     @Override
     public LocalDate unmarshal(String v) {
-            return LocalDate.parse(v, formatter);
+        return LocalDate.parse(v, formatter);
     }
 
 }

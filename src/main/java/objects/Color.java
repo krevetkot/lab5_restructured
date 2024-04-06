@@ -2,6 +2,7 @@ package objects;
 
 /**
  * Перечисление цветов.
+ *
  * @author Kseniya
  */
 public enum Color {
